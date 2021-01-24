@@ -20,8 +20,13 @@ class Errors {
         this.errors = errors;
     }
 
-    clear(field) {
-        delete this.errors[field];
+    clear(field = {}) {
+        if (field) {
+            delete this.errors[field];
+            return;
+        }
+
+        this.errors = {};
     }
 
     any() {
@@ -53,6 +58,8 @@ class Form {
         for (let field in this.originalData) {
             this[field] = '';
         }
+
+        this.errors.clear();
     }
 
     submit(requestType, url) {
