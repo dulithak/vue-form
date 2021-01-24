@@ -31,12 +31,13 @@
                 <form method="POST" action="/projects" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" name="name" class="form-control" v-model="form.name">
+                        <input type="text" name="name" class="form-control" v-model="form.name" autocomplete="off">
                         <small class="text-danger" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></small>
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input type="text" name="description" class="form-control" v-model="form.description">
+                        <input type="text" name="description" class="form-control" v-model="form.description"
+                            autocomplete="off">
                         <small class="text-danger" v-if="form.errors.has('description')" v-text="form.errors.get('description')"></small>
                     </div>
                     <button type="submit" class="btn btn-primary"

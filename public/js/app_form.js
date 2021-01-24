@@ -49,7 +49,7 @@ class Form {
         return data;
     }
 
-    clear() {
+    reset() {
         for (let field in this.originalData) {
             this[field] = '';
         }
@@ -57,16 +57,29 @@ class Form {
 
     submit(requestType, url) {
         this.isSubmit = true;
-        axios[requestType](url, this.data())
-            .then((response) => {
-                this.isSubmit = false;
-                this.clear();
-                alert('Sccuss');
-            })
-            .catch((error) => {
-                this.isSubmit = false;
-                this.errors.record(error.response.data.errors);
-            });
+
+        return new Promise((resolve, reject) => {
+            axios[requestType](url, this.data())
+                .then(response => {
+                    this.onSuccess(response.data);
+                    resolve(response.data);
+                })
+                .catch(error => {
+                    this.onFail(error.response.data.errors);
+                    reject(error.response.data.errors);
+                });
+        });
+    }
+
+    onSuccess(data) {
+        this.isSubmit = false;
+        this.reset();
+        alert('Success');
+    }
+
+    onFail(errors) {
+        this.isSubmit = false;
+        this.errors.record(errors);
     }
 }
 
@@ -83,7 +96,9 @@ new Vue({
     methods: {
         onSubmit() {
             console.log('Submit');
-            this.form.submit('post', '/projects');
+            this.form.submit('post', '/projects')
+                .then(data => console.log(data))
+                .catch(errors => console.log(errors));
         }
     }
 })
