@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
+    {{-- App styles --}}
+    <link href="/css/app.css" rel="stylesheet">
+
     <style>
         body {
             font-family: 'Nunito';
@@ -58,6 +61,12 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script> --}}
 
     <script src="/js/app.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            
+        });
+    </script>
 
 </body>
 
