@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="/css/app.css" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -22,12 +23,12 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <ul>
-                <li v-for="skill in skills" v-text="skill"></li>
-            </ul>
+            {{-- <input type="text" :value="coupon" @input="coupon = $event.target.value" /> --}}
+
+            <coupon v-model="coupon"></coupon>
         </div>
 
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        {{-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 
         <script src="/js/app.js"></script>
